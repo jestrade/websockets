@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sockets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io.connect('/');
+
+      socket.on('messages', (messages) => {
+        let html = '';
+        messages.forEach(({ author, content }) => {
+          html += `<p>- ${author} says: ${content}</p>`;
+        });
+        document.getElementById('messages').innerHTML = html;
+      });
+
+      const sendMessage = () => {
+        const message = {
+          content: document.getElementById('message').value,
+          author: document.getElementById('author').value,
+        };
+        socket.emit('new-message', message);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Messages</h1>
+    <div id="messages"></div>
+    <form method="POST" onsubmit="return false;">
+      <h2>New Message</h2>
+      <p><textarea id="message" placeholder="message"></textarea></p>
+      <p><input id="author" type="text" placeholder="author" /></p>
+      <p><button type="button" onclick="sendMessage()">Send</button></p>
+    </form>
+  </body>
+</html>
