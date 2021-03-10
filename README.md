@@ -9,7 +9,7 @@ socket.io
 ## To install
 
 ```
-yarn or yarn install
+yarn
 ```
 
 ## Create .env file in the root path
