@@ -1,17 +1,17 @@
 const messages = [
   {
     id: 1,
-    author: 'Jes',
-    content: 'Hola! que tal?',
+    author: 'John Smith',
+    content: 'Hola! qué tal?',
   },
   {
     id: 2,
-    author: 'Jes',
-    content: 'Muy bien! y tu??',
+    author: 'Samantha Smith',
+    content: 'Muy bien! y tú???',
   },
   {
     id: 3,
-    author: 'Jes',
+    author: 'John Doe',
     content: 'Genial!',
   },
 ];
