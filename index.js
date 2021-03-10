@@ -1,16 +1,13 @@
-const app = require('express')();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-const dotenv = require('dotenv').config();
+const express = require('express');
+const socket = require('socket.io');
+const dotenv = require('dotenv');
 const { handleSocket } = require('./socket');
 
+const app = express();
+app.use(express.static('public'));
+dotenv.config();
 const port = process.env.PORT || process.env.HTTP_PORT;
+const server = app.listen(port);
+
+const io = socket(server);
 handleSocket(io);
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
-
-server.listen(port, () => {
-  console.log(`server running in port ${port}`);
-});

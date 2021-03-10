@@ -6,25 +6,7 @@
     <title>Sockets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      const socket = io.connect('/');
-
-      socket.on('messages', (messages) => {
-        let html = '';
-        messages.forEach(({ author, content }) => {
-          html += `<p>- ${author} says: ${content}</p>`;
-        });
-        document.getElementById('messages').innerHTML = html;
-      });
-
-      const sendMessage = () => {
-        const message = {
-          content: document.getElementById('message').value,
-          author: document.getElementById('author').value,
-        };
-        socket.emit('new-message', message);
-      };
-    </script>
+    <script src="main.js"></script>
   </head>
   <body>
     <h1>Messages</h1>
