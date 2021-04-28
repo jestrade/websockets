@@ -10,6 +10,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "DEBUG=* nodemon index.js"
   }
 }
